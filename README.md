@@ -52,7 +52,7 @@ Note: The decison was made to switch from a MongoDB to a Postgres container beca
 
 Note: Deploying to an AWS EC2 instance was moved to a stretch goal due to scope limitations. 
 
-## System Administration Guide
+## Basic System Administration Guide
 
 ### Local Development
 
@@ -82,7 +82,7 @@ docker-compose down -v
 CLEAR_DB=true docker-compose up --build
 ```
 
-## System Administration Guide
+## Advanced System Administration Guide
 
 After starting the containers:
 1. Navigate to [http://localhost:5173](http://localhost:5173) in your browser for the frontend
