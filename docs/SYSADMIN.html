@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SYSADMIN.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="chatpet-system-administration-guide">ChatPet System Administration Guide</h1>
+<h2 id="system-architecture">System Architecture</h2>
+<p>The ChatPet application consists of two main containers:</p>
+<ol>
+<li>
+<p><strong>Database Container (chatpet-db)</strong></p>
+<ul>
+<li>PostgreSQL database</li>
+<li>Stores messages, users, and inventory</li>
+<li>Persists data using Docker volumes</li>
+<li>Runs on port 5432</li>
+</ul>
+</li>
+<li>
+<p><strong>Web Application Container (chatpet-web)</strong></p>
+<ul>
+<li>Bun.js server running Express backend</li>
+<li>Vite development server for React frontend</li>
+<li>Backend runs on port 3000</li>
+<li>Frontend runs on port 5173</li>
+</ul>
+</li>
+</ol>
+<h2 id="container-management">Container Management</h2>
+<h3 id="starting-the-application">Starting the Application</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Start all containers</span>
+docker-compose up
+
+<span class="hljs-comment"># Start in detached mode</span>
+docker-compose up -d
+
+<span class="hljs-comment"># Rebuild and start (after code changes)</span>
+docker-compose up --build
+</div></code></pre>
+<h3 id="stopping-the-application">Stopping the Application</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Stop containers but keep data</span>
+docker-compose down
+
+<span class="hljs-comment"># Stop containers and remove volumes (will delete all data)</span>
+docker-compose down -v
+</div></code></pre>
+<h3 id="checking-container-status">Checking Container Status</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># List running containers</span>
+docker ps
+
+<span class="hljs-comment"># View container logs</span>
+docker logs chatpet-db
+docker logs chatpet-web
+
+<span class="hljs-comment"># Follow logs in real-time</span>
+docker logs -f chatpet-web
+</div></code></pre>
+<h2 id="database-management">Database Management</h2>
+<h3 id="connecting-to-database">Connecting to Database</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Connect to PostgreSQL database</span>
+docker <span class="hljs-built_in">exec</span> -it chatpet-db psql -U admin -d chatpet
+
+<span class="hljs-comment"># Common PostgreSQL commands:</span>
+\dt             <span class="hljs-comment"># List tables</span>
+\d+ tablename   <span class="hljs-comment"># Describe table</span>
+\q              <span class="hljs-comment"># Quit</span>
+</div></code></pre>
+<h3 id="useful-database-queries">Useful Database Queries</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Check users</span>
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">users</span>;
+
+<span class="hljs-comment">-- Check recent messages</span>
+<span class="hljs-keyword">SELECT</span> m.*, u.username 
+<span class="hljs-keyword">FROM</span> messages m 
+<span class="hljs-keyword">JOIN</span> <span class="hljs-keyword">users</span> u <span class="hljs-keyword">ON</span> m.user_id = u.id 
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> m.created_at <span class="hljs-keyword">DESC</span> 
+<span class="hljs-keyword">LIMIT</span> <span class="hljs-number">10</span>;
+
+<span class="hljs-comment">-- Check inventory</span>
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> inventory;
+</div></code></pre>
+<h3 id="volume-management">Volume Management</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># List volumes</span>
+docker volume ls
+
+<span class="hljs-comment"># Inspect volume</span>
+docker volume inspect chatpet_postgres_data
+
+<span class="hljs-comment"># Backup database</span>
+docker <span class="hljs-built_in">exec</span> chatpet-db pg_dump -U admin chatpet &gt; backup.sql
+
+<span class="hljs-comment"># Restore database</span>
+cat backup.sql | docker <span class="hljs-built_in">exec</span> -i chatpet-db psql -U admin -d chatpet
+</div></code></pre>
+<h2 id="health-monitoring">Health Monitoring</h2>
+<h3 id="database-health">Database Health</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check database health</span>
+docker <span class="hljs-built_in">exec</span> chatpet-db pg_isready -U admin -d chatpet
+
+<span class="hljs-comment"># Check database size</span>
+docker <span class="hljs-built_in">exec</span> -it chatpet-db psql -U admin -d chatpet -c <span class="hljs-string">"\l+"</span>
+</div></code></pre>
+<h3 id="application-health">Application Health</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check if servers are responding</span>
+curl http://localhost:3000/messages    <span class="hljs-comment"># Backend API</span>
+curl http://localhost:5173            <span class="hljs-comment"># Frontend</span>
+
+<span class="hljs-comment"># Check WebSocket connection</span>
+wscat -c ws://localhost:3000          <span class="hljs-comment"># Requires wscat package</span>
+</div></code></pre>
+<h3 id="resource-usage">Resource Usage</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check container resource usage</span>
+docker stats chatpet-db chatpet-web
+
+<span class="hljs-comment"># Check container processes</span>
+docker top chatpet-web
+docker top chatpet-db
+</div></code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<ol>
+<li>
+<p><strong>Database Connection Issues</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check database logs</span>
+docker logs chatpet-db
+
+<span class="hljs-comment"># Verify database is accepting connections</span>
+docker <span class="hljs-built_in">exec</span> chatpet-db pg_isready
+</div></code></pre>
+</li>
+<li>
+<p><strong>Web Server Issues</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check web server logs</span>
+docker logs chatpet-web
+
+<span class="hljs-comment"># Restart web container</span>
+docker-compose restart web
+</div></code></pre>
+</li>
+<li>
+<p><strong>Volume Issues</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check volume permissions</span>
+docker <span class="hljs-built_in">exec</span> chatpet-db ls -la /var/lib/postgresql/data
+
+<span class="hljs-comment"># Recreate volumes (will delete data)</span>
+docker-compose down -v
+docker-compose up --build
+</div></code></pre>
+</li>
+</ol>
+<h3 id="debug-endpoints">Debug Endpoints</h3>
+<p>The application provides debug endpoints for troubleshooting:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check message data</span>
+curl http://localhost:3000/debug/messages
+
+<span class="hljs-comment"># Check users and messages</span>
+curl http://localhost:3000/debug/users
+</div></code></pre>
+<h2 id="maintenance-tasks">Maintenance Tasks</h2>
+<h3 id="regular-maintenance">Regular Maintenance</h3>
+<ol>
+<li>
+<p><strong>Backup Database</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Create backup</span>
+docker <span class="hljs-built_in">exec</span> chatpet-db pg_dump -U admin chatpet &gt; backup_$(date +%Y%m%d).sql
+</div></code></pre>
+</li>
+<li>
+<p><strong>Clean Old Data</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">-- Delete old messages (older than 30 days)</span>
+<span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> messages 
+<span class="hljs-keyword">WHERE</span> created_at &lt; <span class="hljs-keyword">NOW</span>() - <span class="hljs-built_in">INTERVAL</span> <span class="hljs-string">'30 days'</span>;
+</div></code></pre>
+</li>
+<li>
+<p><strong>Check Logs</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Archive container logs</span>
+docker logs chatpet-web &gt; web_logs_$(date +%Y%m%d).<span class="hljs-built_in">log</span>
+docker logs chatpet-db &gt; db_logs_$(date +%Y%m%d).<span class="hljs-built_in">log</span>
+</div></code></pre>
+</li>
+</ol>
+<h3 id="updating-the-application">Updating the Application</h3>
+<ol>
+<li>Pull latest code changes</li>
+<li>Rebuild containers:<pre class="hljs"><code><div>docker-compose down
+git pull
+docker-compose up --build
+</div></code></pre>
+</li>
+</ol>
+<h2 id="security-considerations">Security Considerations</h2>
+<ol>
+<li>Database credentials are stored in docker-compose.yml</li>
+<li>Database port (5432) is exposed for development</li>
+<li>Consider using environment variables for sensitive data</li>
+<li>In production, use proper SSL/TLS certificates</li>
+</ol>
+<h2 id="monitoring-recommendations">Monitoring Recommendations</h2>
+<ol>
+<li>Set up container monitoring (e.g., Prometheus + Grafana)</li>
+<li>Monitor database connections and query performance</li>
+<li>Track WebSocket connections and message throughput</li>
+<li>Monitor disk usage for the database volume</li>
+</ol>
+<p>For additional assistance or issues, please refer to the project repository or contact the development team.</p>
+
+</body>
+</html>

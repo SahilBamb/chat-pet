@@ -1,0 +1,86 @@
+{
+    "localUrl": "http://localhost:3000",
+    "localWebsiteURL": "ws://localhost:3000",
+    "localEndUrl": "localhost:3000",
+    "kinesisGirl" : "/assets/kinesisGirl.jpg",
+    "jar" : "/assets/jar.jpg",
+    "lootbox" : "/assets/lootbox.jpg",
+    "questionmark" : "/assets/questionmark.jpg",
+    "shopkeeper": {
+        "bubble" : {
+            "avatar" : "/assets/shopkeeper/bubbleshopkeeper.png",
+            "storeInventory": ["jar","jar"],
+            "messageColor" : "brown"
+        },
+        "murmaid" : {
+            "avatar" : "/assets/shopkeeper/murmaidshopkeeper.png",
+            "storeInventory": ["jar","jar"],
+            "messageColor" : "aquamarine"
+        }
+    },
+    "breeder" : {
+        "traveler": {
+            "avatar": "/assets/breeder/traveler.png",
+            "petInventory": ["birbclaw", "felicity"],
+            "messageColor": "teal"
+        },
+        "normal_traveler": {
+            "avatar": "/assets/breeder/normal_traveler.png",
+            "petInventory": ["bumble", "gryphon"],
+            "messageColor": "seagreen"
+        },
+        "spooky_traveler": {
+            "avatar": "/assets/breeder/spooky_traveler.png",
+            "petInventory": ["razortooth"],
+            "messageColor": "darkviolet"
+        },
+        "undead_traveler": {
+            "avatar": "/assets/breeder/undead_traveler.png",
+            "petInventory": ["draco", "nervfish"],
+            "messageColor": "darkslategray"
+        }
+    },
+    "pet" : {
+        "draco": {
+            "avatar": "/assets/pet/draco.png",
+            "vanilla": {"avatar": "/assets/pet/draco.png", "req": {}},
+            "zombie": {"avatar": "/assets/pet/draco.png", "req": {}}
+        },
+        "nervfish": {
+            "avatar": "/assets/pet/nervfish.png",
+            "vanilla": {"avatar": "/assets/pet/nervfish.png", "req": {}},
+            "zombie": {"avatar": "/assets/pet/nervfish.png", "req": {}}
+        },
+        "birbclaw": {
+            "avatar": "/assets/pet/birbclaw.png",
+            "vanilla": {"avatar": "/assets/pet/birbclaw.png", "req": {}}
+        },
+        "bumble": {
+            "avatar": "/assets/pet/bumble.png",
+            "vanilla": {"avatar": "/assets/pet/bumble.png", "req": {}}
+        },
+        "felicity": {
+            "avatar": "/assets/pet/felicity.png",
+            "vanilla": {"avatar": "/assets/pet/felicity.png", "req": {}}
+        },
+        "gryphon": {
+            "avatar": "/assets/pet/gryphon.png",
+            "vanilla": {"avatar": "/assets/pet/gryphon.png", "req": {}}
+        },
+        "razortooth": {
+            "avatar": "/assets/pet/razortooth.png",
+            "vanilla": {"avatar": "/assets/pet/razortooth.png", "req": {}}
+        }
+    },
+    "ai": {
+        "guyl1": {
+            "avatar": "/assets/ai/guyl1.png"
+        },
+        "guyl2": {
+            "avatar": "/assets/ai/guyl2.png"
+        },
+        "guyl3": {
+            "avatar": "/assets/ai/guyl3.png"
+        }
+    }
+}

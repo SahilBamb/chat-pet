@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  db:
+    build: 
+      context: ./db
+      dockerfile: Dockerfile
+    container_name: chatpet-db
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    volumes:
+      - chatpet_postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: chatpet
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d chatpet"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - chatpet-network
+
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: chatpet-web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+      - "5173:5173"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_HOST=chatpet-db
+      - DB_USER=admin
+      - DB_PASSWORD=password
+      - DB_NAME=chatpet
+      - VITE_API_URL=http://localhost:3000
+      - HOST=0.0.0.0
+      - CORS_ORIGIN=http://localhost:5173
+      - MESSAGE_INTERVAL=10000
+      - GEMINI_API_KEY=AIzaSyDgx3NBP3alXev3-3W0GEjijUm9hA5BgYk
+      - CLEAR_DB=${CLEAR_DB:-false}
+    networks:
+      - chatpet-network
+
+networks:
+  chatpet-network:
+    driver: bridge
+
+volumes:
+  chatpet_postgres_data:
+    name: chatpet_postgres_data
