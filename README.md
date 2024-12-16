@@ -3,9 +3,11 @@
 ## Table of Contents
 1. [Project Proposal](#project-proposal-midterm--final-submission)
 
-2. [System Administration Guide](#basic-system-administration-how-to-run-containers)
+2. [System Administration Guide](#basic-system-administration-guide)
 
-3. [Development Journal](#documentation)
+3. [Development Journal](#development-journal)
+   
+4. [Architecture](#architecture)
 
 
 ## Project Proposal: Midterm & Final Submission
@@ -104,6 +106,8 @@ Note: If port 5173 is already in use, Vite might use a different port - remember
 
 - Lessons learned during the development process
 
+
+## Architecture
 
 [Link to Architecture](ARCHITECTURE.md)
 - System architecture diagrams and data flow documentation
