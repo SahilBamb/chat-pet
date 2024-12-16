@@ -131,3 +131,24 @@ dist
 
 # Mac specific
 .DS_Store
+
+# Add to your existing .gitignore
+*.mp4
+*.mov
+*.avi
+*.wmv
+*.zip
+*.tar.gz
+*.rar
+/public/assets/videos/
+/public/assets/images/large/
+*.psd
+*.ai
+
+# Large original images
+public/assets/original/*
+public/assets/high-res/*
+
+# Specific large files
+public/assets/pet/1cd6353d1c0b843fb71eba881d839efea94fbb1802b8517ed709883f5df02a27.png
+public/vanilla.png

@@ -111,3 +111,8 @@ Note: If port 5173 is already in use, Vite might use a different port - remember
 
 [Link to Architecture](ARCHITECTURE.md)
 - System architecture diagrams and data flow documentation
+
+## Environment Setup
+
+1. Copy `.env.example` to `.env`
+2. Add your Gemini API key to `.env`

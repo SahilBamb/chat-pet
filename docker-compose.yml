@@ -44,10 +44,12 @@ services:
       - HOST=0.0.0.0
       - CORS_ORIGIN=http://localhost:5173
       - MESSAGE_INTERVAL=10000
-      - GEMINI_API_KEY=AIzaSyDgx3NBP3alXev3-3W0GEjijUm9hA5BgYk
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
       - CLEAR_DB=${CLEAR_DB:-false}
     networks:
       - chatpet-network
+    env_file:
+      - .env
 
 networks:
   chatpet-network:
